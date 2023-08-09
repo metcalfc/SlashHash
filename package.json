@@ -1,0 +1,36 @@
+{
+  "private": true,
+  "name": "daytona-web-extension",
+  "version": "0.1.0",
+  "license": "MIT",
+  "description": "Browser extension (Chrome/Firefox/Edge) for enhancing GitLab, GitHub and Bitbucket with Daytona buttons",
+  "main": "src/slashhash.js",
+  "scripts": {
+    "build": "yarn clean && yarn webpack",
+    "build:safari": " xcrun safari-web-extension-converter . --app-name Daytona --bundle-identifier io.daytona.SlashHash",
+    "package": "yarn build && yarn clean:package && zip -rD daytona.xpi dist icons src manifest.json",
+    "clean": "rimraf dist && yarn clean:package",
+    "clean:package": "rimraf daytona.xpi",
+    "webpack": "webpack",
+    "watch": "webpack -w"
+  },
+  "dependencies": {
+    "@types/events": "^3.0.0",
+    "dom-loaded": "^2.0.0",
+    "github-injection": "^1.1.0",
+    "select-dom": "^5.1.0",
+    "webextension-polyfill": "^0.10.0"
+  },
+  "devDependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "rimraf": "^5.0.1",
+    "source-map-loader": "^4.0.1",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.4.4",
+    "typescript": "^5.1.6",
+    "webextension-polyfill-ts": "^0.26.0",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4"
+  }
+}
